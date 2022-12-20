@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { ImageGalleryTag } from './ImageGallery.styled.js';
 
 export const ImageGallery = ({ images, onImageClick }) => {
-  // console.log(images);
   return (
     <ImageGalleryTag>
       {images.map(image => {
@@ -18,4 +18,9 @@ export const ImageGallery = ({ images, onImageClick }) => {
       })}
     </ImageGalleryTag>
   );
+};
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object.isRequired),
+  onImageClick: PropTypes.func.isRequired,
 };
