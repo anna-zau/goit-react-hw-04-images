@@ -13,19 +13,18 @@ export const Modal = ({ onCloseModal, largeImageURL }) => {
     }
   };
 
-  const onPressExit = evt => {
-    if (evt.code === 'Escape') {
-      onCloseModal();
-    }
-  };
-
   useEffect(() => {
+    const onPressExit = evt => {
+      if (evt.code === 'Escape') {
+        onCloseModal();
+      }
+    };
     window.addEventListener('keydown', onPressExit);
 
     return () => {
       window.removeEventListener('keydown', onPressExit);
     };
-  });
+  }, [onCloseModal]);
 
   return createPortal(
     <Overlay onClick={onOverlayClick}>
